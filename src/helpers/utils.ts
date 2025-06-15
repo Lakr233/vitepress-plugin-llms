@@ -122,19 +122,19 @@ export const expandTemplate = (template: string, variables: Record<string, strin
  * Generates a complete link by combining a domain, path, and an optional extension.
  *
  * @param domain - The base domain of the link (e.g., "https://example.com").
- * @param path - The path to append to the domain (e.g., "guide").
+ * @param urlPath - The path to append to the domain (e.g., "guide").
  * @param extension - An optional extension to append to the path (e.g., ".md").
  * @returns The generated link
  */
 export const generateLink = (
-	path: string,
+	urlPath: string,
 	domain?: string,
 	extension?: LinksExtension,
 	cleanUrls?: VitePressConfig['cleanUrls'],
 ) =>
 	expandTemplate('{domain}/{path}{extension}', {
 		domain: domain || '',
-		path,
+		path: path.posix.normalize(urlPath),
 		extension: cleanUrls ? '' : extension,
 	})
 
