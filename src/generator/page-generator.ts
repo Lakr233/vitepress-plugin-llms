@@ -26,6 +26,9 @@ export async function generateLLMFriendlyPages(
 
 			await fs.mkdir(path.dirname(targetPath), { recursive: true })
 
+			// @ts-expect-error
+			matter.clearCache()
+
 			await fs.writeFile(
 				targetPath,
 				matter.stringify(

@@ -49,7 +49,7 @@ export async function generateLLMsFullTxt(
 	const fileContents = await Promise.all(
 		filteredFiles.map(async (file) => {
 			// file.path is already relative to outDir, so use it directly
-			const metadata = await generateMetadata(file.file, {
+			const metadata = generateMetadata(file.file, {
 				domain,
 				filePath: file.path,
 				linksExtension,

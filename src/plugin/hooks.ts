@@ -163,6 +163,9 @@ export async function generateBundle(
 				})
 			}
 
+			// @ts-expect-error
+			matter.clearCache()
+
 			const processedMarkdown = matter(String(await markdownProcessor.process(content)))
 
 			// Extract title from frontmatter or use the first heading
